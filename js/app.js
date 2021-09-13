@@ -13,10 +13,12 @@ const showProducts = (products) => {
     div.classList.add("product");
     div.innerHTML = `<div class="single-product">
       <div>
-    <img class="product-image" src=${image}></img>
+        <img class="product-image" src=${image}></img>
       </div>
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
+      <h4>Ratings: ${product.rating.rate}%<h4>
+      <small>Total Ratings Count: ${product.rating.count}</small>
       <h2>Price: $ ${product.price}</h2>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
       <button id="details-btn" class="btn btn-danger">Details</button></div>
@@ -75,6 +77,6 @@ const updateTotal = () => {
   const grandTotal =
     getInputValue("price") + getInputValue("delivery-charge") +
     getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal;
+  document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
 loadProducts();
